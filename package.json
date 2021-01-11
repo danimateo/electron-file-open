@@ -1,0 +1,75 @@
+{
+  "name": "open-file-electron",
+  "version": "0.0.1",
+  "description": "open file",
+  "main": "dist/plugin.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
+    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
+    "swiftlint": "node-swiftlint",
+    "build": "npm run clean && tsc && rollup -c rollup.config.js",
+    "build-electron": "rimraf ./electron/dist && cd ./electron && tsc && rollup --config rollup.config.js",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "dani mateo",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/android": "^2.4.5",
+    "@capacitor/core": "^2.4.5",
+    "@capacitor/ios": "^2.4.5",
+    "@ionic/prettier-config": "^1.0.0",
+    "@ionic/swiftlint-config": "^1.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@types/node": "^14.14.20",
+    "electron": "^11.1.1",
+    "i": "^0.3.6",
+    "npm": "^6.14.11",
+    "prettier": "^2.0.5",
+    "prettier-plugin-java": "^0.8.0",
+    "rimraf": "^3.0.0",
+    "rollup": "^2.36.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "swiftlint": "^1.0.1",
+    "tslib": "^2.1.0",
+    "typescript": "~3.8.3"
+  },
+  "peerDependencies": {
+    "@capacitor/core": "^2.4.5"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "electron/",
+    "OpenFileElectron.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    },
+    "electron": {
+      "src": "electron/dist/plugin.js"
+    }
+  },
+  "prettier": "@ionic/prettier-config",
+  "swiftlint": "@ionic/swiftlint-config",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:d33psc4n/electron-file-open.git"
+  },
+  "bugs": {
+    "url": "git@gitlab.com:d33psc4n/electron-file-open.git/issues"
+  }
+}
