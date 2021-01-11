@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-const { ipcRenderer, shell } = require('electron');
+const { ipcRenderer } = require('electron');
 export class ElectronPluginWeb extends WebPlugin {
     constructor() {
         super({
@@ -14,8 +14,6 @@ export class ElectronPluginWeb extends WebPlugin {
     }
     openFile(options) {
         ipcRenderer.send('open-file', options.value);
-        console.log('called plugin');
-        shell.openExternal(options.value);
     }
 }
 const ElectronPluginOpen = new ElectronPluginWeb();

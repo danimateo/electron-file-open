@@ -2118,7 +2118,7 @@ var capacitorPlugin = (function (exports) {
         mergeWebPlugin(Plugins, plugin);
     };
 
-    const { ipcRenderer, shell } = require('electron');
+    const { ipcRenderer } = require('electron');
     class ElectronPluginWeb extends WebPlugin {
         constructor() {
             super({
@@ -2133,8 +2133,6 @@ var capacitorPlugin = (function (exports) {
         }
         openFile(options) {
             ipcRenderer.send('open-file', options.value);
-            console.log('called plugin');
-            shell.openExternal(options.value);
         }
     }
     const ElectronPluginOpen = new ElectronPluginWeb();
